@@ -1,0 +1,56 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore dotenv environment variable files
+.env
+
+# Ignore npm debug log
+npm-debug.log*
+
+# Ignore yarn integrity file
+.yarn-integrity
+
+# Ignore macOS metadata files
+.DS_Store
+
+# Ignore user-specific files
+npm-debug.log
+yarn-error.log
+
+# Ignore VS Code files
+.vscode/
+
+# Ignore Jest coverage output
+coverage/
+
+# Ignore editor configuration files
+*.swp
+*~
+*.swo
+
+# Ignore npm configuration
+.npmrc
+
+# Ignore yarn configuration
+.yarnrc
+
+# Ignore IDE folders
+.idea/
+*.idea/
+
+# Ignore cache directories
+.cache/
+.cached/
+
+# Ignore compiled files for front-end
+/client/dist/
+
+# Ignore build files for back-end
+/server/build/
+/server/dist/
+
+# Ignore requests.rest file
+requests.rest
