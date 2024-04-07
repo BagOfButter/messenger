@@ -29,8 +29,9 @@ export const handleLogin = async (req: Request, res: Response) => {
     }
 
     const accessToken = generateAccessToken(user._id);
+    const refreshToken = generateRefreshToken(user._id);
 
-    const refreshToken = await generateRefreshToken(user._id);
+    res.cookie("refreshToken", refreshToken, { httpOnly: true });
 
     res.status(200).json({
       accessToken,

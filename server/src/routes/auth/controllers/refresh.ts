@@ -1,24 +1,20 @@
 import { Request, Response } from "express";
 import jwt, { Secret, JwtPayload } from "jsonwebtoken";
-import { RefreshToken } from "@models/refreshTokenModel";
 import { generateAccessToken } from "@utils/generateTokens";
 
 export const handleRefresh = async (req: Request, res: Response) => {
   const userId = req.body.userId;
+  const refreshToken = req.cookies.refreshToken;
   if (!userId) {
     return res.status(401).json({ message: "UserID is required" });
   }
+  if (!refreshToken) {
+    return res.status(401).json({ message: "RefreshToken is required" });
+  }
 
   try {
-    const refreshToken = await RefreshToken.findOne({ userId: userId });
-    if (!refreshToken) {
-      return res
-        .status(401)
-        .json({ message: "Refresh token not found for the user" });
-    }
-
     const decoded = jwt.verify(
-      refreshToken?.token,
+      refreshToken,
       process.env.REFRESH_TOKEN_SECRET as Secret
     ) as JwtPayload;
 

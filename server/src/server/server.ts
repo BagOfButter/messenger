@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import http from "http";
 import cors from "cors";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import { authRouter } from "@routes/auth/authRouter";
 import { settingsRouter } from "@routes/settings/settingsRouter";
 
@@ -20,6 +21,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 app.use("/auth", authRouter);
 app.use("/settings", settingsRouter);
 

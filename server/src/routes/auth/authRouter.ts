@@ -55,10 +55,6 @@ authRouter.post(
   handleRefresh
 );
 
-authRouter.post(
-  "/logout",
-  [body("userId").notEmpty().withMessage("userId is required")],
-  handleLogout
-);
+authRouter.post("/logout", handleLogout);
 
 export { authRouter };

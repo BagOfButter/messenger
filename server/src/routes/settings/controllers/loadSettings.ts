@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { Settings } from "@models/settingsModel";
@@ -8,7 +9,7 @@ export const handleLoadSettings = async (req: Request, res: Response) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const userId = req.body.userId;
+  const userId = new mongoose.Types.ObjectId(req.body.userId);
 
   try {
     const settings = await Settings.findOne({ userId });
